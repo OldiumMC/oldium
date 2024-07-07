@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "oldium",
+  "version": "${version}",
+  "name": "Oldium",
+  "description": "Angelica port for 1.8.9",
+  "license": "Proprietary",
+  "environment": "client",
+  "accessWidener": "oldium.accesswidener",
+  "entrypoints": {
+    "client": [
+    ]
+  },
+  "mixins": [
+    "oldium.mixins.json"
+  ],
+  "depends": {
+    "minecraft": "~1.8.9",
+    "java": ">=17"
+  }
+}
