@@ -376,7 +376,8 @@ public class SodiumWorldRenderer implements ChunkStatusListener {
             if (world.getBlockState(pos).getBlock().hasBlockEntity()) {
                 BlockEntity tileEntity = this.world.getBlockEntity(pos);
 
-                if (tileEntity instanceof ChestBlockEntity chest) {
+                if (tileEntity instanceof ChestBlockEntity) {
+                    ChestBlockEntity chest = (ChestBlockEntity)tileEntity;
                     if (chest.neighborChestWest != null) {
                         pos = pos.offset(Direction.WEST);
                         tileEntity = world.getBlockEntity(pos);

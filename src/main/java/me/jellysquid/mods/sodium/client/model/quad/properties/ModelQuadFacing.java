@@ -15,25 +15,50 @@ public enum ModelQuadFacing {
     public static final int COUNT = VALUES.length;
 
     public static ModelQuadFacing fromDirection(Direction dir) {
-        return switch (dir) {
-            case DOWN -> DOWN;
-            case UP -> UP;
-            case NORTH -> NORTH;
-            case SOUTH -> SOUTH;
-            case WEST -> WEST;
-            case EAST -> EAST;
-        };
+        if(dir == Direction.DOWN){
+            return ModelQuadFacing.DOWN;
+        }
+        else if(dir == Direction.UP){
+            return ModelQuadFacing.UP;
+        }
+        else if(dir == Direction.NORTH){
+            return ModelQuadFacing.NORTH;
+        }
+        else if(dir == Direction.SOUTH){
+            return ModelQuadFacing.SOUTH;
+        }
+        else if(dir == Direction.WEST){
+            return ModelQuadFacing.WEST;
+        }
+        else if(dir == Direction.EAST){
+            return ModelQuadFacing.EAST;
+        }
+        else{
+            return ModelQuadFacing.UNASSIGNED;
+        }
     }
     
     public ModelQuadFacing getOpposite() {
-        return switch (this) {
-            case UP -> DOWN;
-            case DOWN -> UP;
-            case EAST -> WEST;
-            case WEST -> EAST;
-            case SOUTH -> NORTH;
-            case NORTH -> SOUTH;
-            default -> UNASSIGNED;
-        };
+        if(this == ModelQuadFacing.DOWN){
+            return ModelQuadFacing.UP;
+        }
+        else if(this == ModelQuadFacing.UP){
+            return ModelQuadFacing.DOWN;
+        }
+        else if(this == ModelQuadFacing.NORTH){
+            return ModelQuadFacing.SOUTH;
+        }
+        else if(this == ModelQuadFacing.SOUTH){
+            return ModelQuadFacing.NORTH;
+        }
+        else if(this == ModelQuadFacing.WEST){
+            return ModelQuadFacing.EAST;
+        }
+        else if(this == ModelQuadFacing.EAST){
+            return ModelQuadFacing.WEST;
+        }
+        else{
+            return ModelQuadFacing.UNASSIGNED;
+        }
     }
 }

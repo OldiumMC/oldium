@@ -16,6 +16,6 @@
   ],
   "depends": {
     "minecraft": "~1.8.9",
-    "java": ">=17"
+    "java": ">=8"
   }
 }

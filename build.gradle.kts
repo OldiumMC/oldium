@@ -51,3 +51,9 @@ val remapShadowedJar by tasks.creating(RemapJarTask::class) {
 loom {
     accessWidenerPath = file("src/main/resources/oldium.accesswidener")
 }
+
+java {
+    toolchain {
+    languageVersion = JavaLanguageVersion.of(8)
+    }
+}

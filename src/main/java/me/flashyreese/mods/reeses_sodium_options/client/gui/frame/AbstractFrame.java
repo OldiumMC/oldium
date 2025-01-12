@@ -31,13 +31,16 @@ public abstract class AbstractFrame extends AbstractWidget implements ParentElem
 
     public void buildFrame() {
         for (Element element : this.children) {
-            if (element instanceof AbstractFrame abstractFrame) {
+            if (element instanceof AbstractFrame) {
+                AbstractFrame abstractFrame = (AbstractFrame)element;
                 this.controlElements.addAll(abstractFrame.controlElements);
             }
-            if (element instanceof ControlElement<?> controlElement) {
+            if (element instanceof ControlElement<?>) {
+                ControlElement<?> controlElement = (ControlElement<?>)element;
                 this.controlElements.add(controlElement);
             }
-            if (element instanceof Drawable drawable) {
+            if (element instanceof Drawable) {
+                Drawable drawable = (Drawable)element;
                 this.drawable.add(drawable);
             }
         }

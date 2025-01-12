@@ -464,12 +464,18 @@ public class WorldSlice implements SodiumBlockAccess {
         if (!shaded) {
             return world.dimension.hasNoSkylight() ? 0.9f : 1.0f;
         }
-        return switch (direction) {
-            case DOWN -> .5f;
-            case UP -> 1f;
-            case NORTH, SOUTH -> .8f;
-            default -> .6f;
-        };
+        if(direction == Direction.DOWN){
+            return .5f;
+        }
+        else if(direction == Direction.UP){
+            return 1f;
+        }
+        else if(direction == Direction.NORTH || direction == Direction.SOUTH){
+            return .8f;
+        }
+        else{
+            return .6f;
+        }
     }
 
     // [VanillaCopy] PalettedContainer#toIndex

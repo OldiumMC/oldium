@@ -34,7 +34,8 @@ public class ControlElement<T> extends AbstractWidget {
         if (this.option.isAvailable()) {
             if (this.option.hasChanged()) {
                 label = Formatting.ITALIC + name + " *";
-            } else if (option instanceof OptionExtended<?> optionExtended && optionExtended.isHighlight()) {
+            } else if (option instanceof OptionExtended<?> && ((OptionExtended<?>)option).isHighlight()) {
+                OptionExtended<?> optionExtended = (OptionExtended<?>)option;
                 Formatting color = optionExtended.isSelected() ? Formatting.DARK_GREEN : Formatting.YELLOW;
                 label = color + name;
             } else {

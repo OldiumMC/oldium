@@ -410,7 +410,8 @@ public class SearchTextFieldComponent extends AbstractWidget {
                             int count = 0;
                             for (OptionPage page : this.pages) {
                                 for (Option<?> option : page.getOptions()) {
-                                    if(option instanceof OptionExtended<?> optionExtended) {
+                                    if(option instanceof OptionExtended<?>) {
+                                        OptionExtended<?> optionExtended = (OptionExtended<?>)option;
                                         if (optionExtended.isHighlight() && optionExtended.getParentDimension() != null) {
                                             if (count == this.lastSearchIndex.get()) {
                                                 final Dim2i optionDim = optionExtended.getDim2i();

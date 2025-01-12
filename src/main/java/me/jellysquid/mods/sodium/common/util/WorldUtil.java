@@ -132,8 +132,8 @@ public class WorldUtil {
     }
 
     public static AbstractFluidBlock toFluidBlock(Block block) {
-        if(block instanceof AbstractFluidBlock liquid) {
-            return liquid;
+        if(block instanceof AbstractFluidBlock) {
+            return (AbstractFluidBlock)block;
         }
         return null;
     }

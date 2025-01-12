@@ -57,26 +57,41 @@ public class ModelQuadFlags {
             maxZ = Math.max(maxZ, z);
         }
 
-        boolean partial = switch (face.getAxis()) {
-            case X -> minY >= 0.0001f || minZ >= 0.0001f || maxY <= 0.9999F || maxZ <= 0.9999F;
-            case Y -> minX >= 0.0001f || minZ >= 0.0001f || maxX <= 0.9999F || maxZ <= 0.9999F;
-            case Z -> minX >= 0.0001f || minY >= 0.0001f || maxX <= 0.9999F || maxY <= 0.9999F;
-        };
+        boolean partial = false;
+        boolean parallel = false;
+        boolean flag = false;
 
-        boolean parallel = switch (face.getAxis()) {
-            case X -> minX == maxX;
-            case Y -> minY == maxY;
-            case Z -> minZ == maxZ;
-        };
+        if(face.getAxis() == Direction.Axis.X){
+            partial = minY >= 0.0001f || minZ >= 0.0001f || maxY <= 0.9999F || maxZ <= 0.9999F;
+            parallel = minX == maxX;
+        }
+        else if(face.getAxis() == Direction.Axis.Y){
+            partial = minX >= 0.0001f || minZ >= 0.0001f || maxX <= 0.9999F || maxZ <= 0.9999F;
+            parallel = minY == maxY;
+        }
+        else if(face.getAxis() == Direction.Axis.Z){
+            partial = minX >= 0.0001f || minY >= 0.0001f || maxX <= 0.9999F || maxY <= 0.9999F;
+            parallel = minZ == maxZ;
+        }
 
-        boolean flag = switch (face) {
-            case DOWN -> minY < 0.0001f;
-            case UP -> maxY > 0.9999F;
-            case NORTH -> minZ < 0.0001f;
-            case SOUTH -> maxZ > 0.9999F;
-            case WEST -> minX < 0.0001f;
-            case EAST -> maxX > 0.9999F;
-        };
+        if(face == Direction.DOWN){
+            flag = minY < 0.0001f;
+        }
+        else if(face == Direction.UP){
+            flag = maxY > 0.9999F;
+        }
+        else if(face == Direction.NORTH){
+            flag = minZ < 0.0001f;
+        }
+        else if(face == Direction.SOUTH){
+            flag = maxZ > 0.9999F;
+        }
+        else if(face == Direction.WEST){
+            flag = minX < 0.0001f;
+        }
+        else if(face == Direction.EAST){
+            flag = maxX > 0.9999F;
+        }
 
         boolean aligned = parallel && flag;
 

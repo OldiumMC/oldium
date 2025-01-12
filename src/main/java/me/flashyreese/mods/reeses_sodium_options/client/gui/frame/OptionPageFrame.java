@@ -54,11 +54,14 @@ public class OptionPageFrame extends AbstractFrame {
         }
 
         this.dim.setHeight(y);
-        this.page.getGroups().forEach(group -> group.getOptions().forEach(option -> {
-            if (option instanceof OptionExtended<?> optionExtended) {
-                optionExtended.setParentDimension(this.dim);
+        for(OptionGroup group : this.page.getGroups()){
+            for(Option<?> option : group.getOptions()){
+                if(option instanceof OptionExtended<?>){
+                    OptionExtended<?> optionExtended = (OptionExtended<?>)option;
+                    optionExtended.setParentDimension(this.dim);
+                }
             }
-        }));
+        }
     }
 
     @Override
